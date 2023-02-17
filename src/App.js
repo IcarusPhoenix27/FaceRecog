@@ -13,23 +13,10 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 import banner from './banner1.png';
 
-//You must add your own API key here from Clarifai.
 const app = new Clarifai.App({
  apiKey: "c8e92c98fee54c748c88e3ebc9cfa96e"
 });
 
-// No Longer need this. Updated to particles-bg
-// const particlesOptions = {
-//   particles: {
-//     number: {
-//       value: 30,
-//       density: {
-//         enable: true,
-//         value_area: 800
-//       }
-//     }
-//   }
-// }
 
 class App extends Component {
   constructor() {
@@ -84,15 +71,6 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
    
-    // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
-    // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
-    // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
-    // If that isn't working, then that means you will have to wait until their servers are back up. 
-
-    // Old Way:
-    // app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-
-    // New Way:
     app.models
       .predict(
         {
